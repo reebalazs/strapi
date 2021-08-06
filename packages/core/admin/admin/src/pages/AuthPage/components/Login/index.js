@@ -1,12 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Link, Text, Box } from '@strapi/parts';
+import { useIntl } from 'react-intl';
 import BaseLogin from './BaseLogin';
-import UnauthenticatedLayout from '../../../../layouts/UnauthenticatedLayout';
+import UnauthenticatedLayout, { LayoutContent } from '../../../../layouts/UnauthenticatedLayout';
 
 const Login = loginProps => {
+  const { formatMessage } = useIntl();
+
   return (
     <UnauthenticatedLayout>
-      <BaseLogin {...loginProps} />
+      <LayoutContent>
+        <BaseLogin {...loginProps} />
+      </LayoutContent>
+      <Row justifyContent="center">
+        <Box paddingTop={4}>
+          <Link to="/auth/forgot-password">
+            <Text small>{formatMessage({ id: 'Auth.link.forgot-password' })}</Text>
+          </Link>
+        </Box>
+      </Row>
     </UnauthenticatedLayout>
   );
 };

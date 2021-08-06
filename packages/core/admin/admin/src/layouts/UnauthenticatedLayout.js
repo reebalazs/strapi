@@ -13,6 +13,24 @@ export const Column = styled(Row)`
   flex-direction: column;
 `;
 
+export const LayoutContent = ({ children }) => (
+  <Wrapper
+    shadow="tableShadow"
+    hasRadius
+    paddingTop="9"
+    paddingBottom="9"
+    paddingLeft="10"
+    paddingRight="10"
+    background="neutral0"
+    justifyContent="center"
+  >
+    {children}
+  </Wrapper>
+);
+LayoutContent.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const UnauthenticatedLayout = ({ children }) => {
   return (
     <div>
@@ -22,15 +40,7 @@ const UnauthenticatedLayout = ({ children }) => {
         </Box>
       </Row>
       <Box paddingTop="11" paddingBottom="11">
-        <Wrapper
-          shadow="tableShadow"
-          hasRadius
-          padding="10"
-          background="neutral0"
-          justifyContent="center"
-        >
-          {children}
-        </Wrapper>
+        {children}
       </Box>
     </div>
   );
