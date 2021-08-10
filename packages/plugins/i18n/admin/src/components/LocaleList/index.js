@@ -22,7 +22,6 @@ import {
 import EditIcon from '@strapi/icons/EditIcon';
 import DeleteIcon from '@strapi/icons/DeleteIcon';
 import useLocales from '../../hooks/useLocales';
-import LocaleRow from '../LocaleRow';
 import { getTrad } from '../../utils';
 import ModalEdit from '../ModalEdit';
 import ModalDelete from '../ModalDelete';
@@ -87,7 +86,7 @@ const LocaleList = ({ canUpdateLocale, canDeleteLocale, onToggleCreateModal, isC
                       {canUpdateLocale && (
                         <IconButton
                           onClick={() => handleEditLocale(locale)}
-                          label="Edit"
+                          label={formatMessage({ id: getTrad('Settings.list.actions.edit') })}
                           icon={<EditIcon />}
                           noBorder
                         />
@@ -96,7 +95,7 @@ const LocaleList = ({ canUpdateLocale, canDeleteLocale, onToggleCreateModal, isC
                         <Box paddingLeft={canUpdateLocale ? 1 : 0}>
                           <IconButton
                             onClick={() => handleDeleteLocale(locale)}
-                            label="Delete"
+                            label={formatMessage({ id: getTrad('Settings.list.actions.delete') })}
                             icon={<DeleteIcon />}
                             noBorder
                           />
