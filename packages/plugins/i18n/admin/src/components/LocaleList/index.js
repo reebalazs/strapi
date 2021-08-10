@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { EmptyState, ListButton } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import {
   Table,
@@ -23,6 +22,7 @@ import {
 import EditIcon from '@strapi/icons/EditIcon';
 import DeleteIcon from '@strapi/icons/DeleteIcon';
 import AddIcon from '@strapi/icons/AddIcon';
+import EmptyStateDocument from '@strapi/icons/EmptyStateDocument';
 import useLocales from '../../hooks/useLocales';
 import { getTrad } from '../../utils';
 import ModalEdit from '../ModalEdit';
@@ -50,7 +50,7 @@ const LocaleList = ({ canUpdateLocale, canDeleteLocale, onToggleCreateModal, isC
       <>
         <ContentLayout>
           <EmptyStateLayout
-            icon={<AddIcon />}
+            icon={<EmptyStateDocument width="" height="" />}
             content={formatMessage({ id: getTrad('Settings.list.empty.title') })}
             action={
               onToggleCreateModal ? (
