@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { BaselineAlignment } from '@strapi/helper-plugin';
-import { Header } from '@buffetjs/custom';
-import { Button } from '@buffetjs/core';
+import AddIcon from '@strapi/icons/AddIcon';
+import { HeaderLayout, Button, Main } from '@strapi/parts';
 import { getTrad } from '../../utils';
 import LocaleList from '../../components/LocaleList';
 
@@ -20,32 +19,18 @@ const LocaleSettingsPage = ({
     ? () => setIsOpenedCreateModal(s => !s)
     : undefined;
 
-  const actions = [
-    {
-      label: formatMessage({ id: getTrad('Settings.list.actions.add') }),
-      onClick: handleToggleModalCreate,
-      color: 'primary',
-      type: 'button',
-      icon: true,
-      Component: props => (canCreateLocale ? <Button {...props} /> : null),
-      style: {
-        paddingLeft: 15,
-        paddingRight: 15,
-      },
-    },
-  ];
-
   return (
-    <>
-      <Header
-        title={{
-          label: formatMessage({ id: getTrad('plugin.name') }),
-        }}
-        content={formatMessage({ id: getTrad('Settings.list.description') })}
-        actions={actions}
+    <Main labelledBy="title">
+      <HeaderLayout
+        id="title"
+        primaryAction={
+          <Button startIcon={<AddIcon />} onClick={handleToggleModalCreate}>
+            {formatMessage({ id: getTrad('Settings.list.actions.add') })}
+          </Button>
+        }
+        title={formatMessage({ id: getTrad('plugin.name') })}
+        subtitle={formatMessage({ id: getTrad('Settings.list.description') })}
       />
-
-      <BaselineAlignment top size="3px" />
 
       {canReadLocale ? (
         <LocaleList
@@ -55,7 +40,7 @@ const LocaleSettingsPage = ({
           isCreating={isOpenedCreateModal}
         />
       ) : null}
-    </>
+    </Main>
   );
 };
 
