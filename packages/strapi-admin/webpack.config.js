@@ -93,9 +93,6 @@ module.exports = ({
             },
           },
           parallel: !isWsl,
-          // Enable file caching
-          cache: true,
-          sourceMap: false,
         }),
       ],
       runtimeChunk: true,
