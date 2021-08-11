@@ -49,7 +49,7 @@ const pretty = pino.pretty({
     return `${options.asColoredText(
       { level: 10 },
       `[${new Date().toISOString()}]`
-    )} ${options.prefix.toLowerCase()} ${logs.stack ? logs.stack : logs.msg}`;
+    )} ${options.prefix.toLowerCase()} ${logs.stack ? logs.stack : logs.msg}\r`;
   },
 });
 

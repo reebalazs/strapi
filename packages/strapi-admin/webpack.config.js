@@ -66,6 +66,8 @@ module.exports = ({
       filename: isProduction ? '[name].[contenthash:8].js' : 'bundle.js',
       chunkFilename: isProduction ? '[name].[contenthash:8].chunk.js' : '[name].chunk.js',
     },
+    // Hide deprecation warnings
+    stats: 'errors-only',
     optimization: {
       minimize: optimize,
       minimizer: [
@@ -174,6 +176,7 @@ module.exports = ({
       symlinks: false,
       extensions: ['.js', '.jsx', '.react.js'],
       mainFields: ['browser', 'jsnext:main', 'main'],
+      fallback: { domain: require.resolve('domain-browser') },
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -191,7 +194,7 @@ module.exports = ({
         PROJECT_TYPE: JSON.stringify(useEE ? 'Enterprise' : 'Community'),
         ENABLED_EE_FEATURES: JSON.stringify(options.features),
       }),
-      new webpack.NormalModuleReplacementPlugin(/ee_else_ce(\.*)/, function(resource) {
+      new webpack.NormalModuleReplacementPlugin(/ee_else_ce(\.*)/, function (resource) {
         let wantedPath = path.join(
           resource.context.substr(0, resource.context.lastIndexOf(`${path.sep}src${path.sep}`)),
           'src'
