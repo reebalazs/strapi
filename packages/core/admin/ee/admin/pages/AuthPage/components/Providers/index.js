@@ -43,9 +43,7 @@ const Providers = () => {
     push('/auth/login');
   };
 
-  const p = [...providers, ...providers, ...providers, ...providers, ...providers];
-
-  if (!ssoEnabled || (!isLoading && p.length === 0)) {
+  if (!ssoEnabled || (!isLoading && providers.length === 0)) {
     return <Redirect to="/auth/login" />;
   }
 
@@ -65,7 +63,7 @@ const Providers = () => {
             </Box>
           </Column>
           <Stack size={7}>
-            <SSOProviders providers={p} />
+            <SSOProviders providers={providers} />
             <Row>
               <DividerFull />
               <Box paddingLeft={3} paddingRight={3}>

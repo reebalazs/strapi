@@ -1,10 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useConfigurations } from '../../../../hooks';
+
+const Image = styled.img`
+  height: ${72 / 16}px;
+`;
 
 const Logo = () => {
   const { authLogo } = useConfigurations();
 
-  return <img src={authLogo} alt="strapi" style={{ height: '72px' }} />;
+  return <Image src={authLogo} alt="" />;
 };
 
 export default Logo;

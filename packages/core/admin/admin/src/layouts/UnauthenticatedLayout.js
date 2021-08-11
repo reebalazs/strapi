@@ -35,8 +35,8 @@ const UnauthenticatedLayout = ({ children }) => {
   return (
     <div>
       <Row justifyContent="flex-end">
-        <Box paddingTop={6} paddingRight={8}>
-          <LocaleToggle isLogged />
+        <Box as="header" paddingTop={6} paddingRight={8}>
+          <LocaleToggle />
         </Box>
       </Row>
       <Box paddingTop="11" paddingBottom="11">
